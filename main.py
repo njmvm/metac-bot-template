@@ -673,17 +673,27 @@ if __name__ == "__main__":
         folder_to_save_reports_to=None,
         skip_previously_forecasted_questions=True,
         extra_metadata_in_explanation=True,
-        # llms={  # choose your model names or GeneralLlm llms here, otherwise defaults will be chosen for you
-        #     "default": GeneralLlm(
-        #         model="openrouter/openai/gpt-4o", # "anthropic/claude-sonnet-4-20250514", etc (see docs for litellm)
-        #         temperature=0.3,
-        #         timeout=40,
-        #         allowed_tries=2,
-        #     ),
-        #     "summarizer": "openai/gpt-4o-mini",
-        #     "researcher": "asknews/news-summaries",
-        #     "parser": "openai/gpt-4o-mini",
-        # },
+        llms={  # choose your model names or GeneralLlm llms here, otherwise defaults will be chosen for you
+            "default": GeneralLlm(
+                model="openrouter/inclusionai/ring-2.6-1t:free",
+                temperature=0.3,
+                timeout=40,
+                allowed_tries=2,
+            ),
+            "summarizer": GeneralLlm(
+                model="openrouter/inclusionai/ring-2.6-1t:free",
+                temperature=0.3,
+                timeout=40,
+                allowed_tries=2,
+            ),
+            "researcher": "asknews/news-summaries",
+            "parser": GeneralLlm(
+                model="openrouter/inclusionai/ring-2.6-1t:free",
+                temperature=0.3,
+                timeout=40,
+                allowed_tries=2,
+            ),
+        },
     )
 
     client = MetaculusClient()
